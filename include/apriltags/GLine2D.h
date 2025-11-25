@@ -1,6 +1,7 @@
 #ifndef GLINE2D_H
 #define GLINE2D_H
 
+#include "MathUtil.h"
 #include <cmath>
 #include <utility>
 #include <vector>
@@ -39,12 +40,12 @@ public:
   //! Get the coordinate of a point (on this line), with zero corresponding to the point
   //! on the that is perpendicular toa line passing through the origin and the line.
   /*  This allows easy computation if one point is between two other points on the line:
-   *  compute the line coordinate of all three points and test if a<=b<=c. This is 
+   *  compute the line coordinate of all three points and test if a<=b<=c. This is
    *  implemented by computing the dot product of the vector 'p' with the
    *  line's direct unit vector.
    */
   float getLineCoordinate(const std::pair<float,float>& p);
-  
+
   //! The inverse of getLineCoordinate.
   std::pair<float,float> getPointOfCoordinate(float coord);
 

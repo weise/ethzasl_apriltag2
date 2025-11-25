@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 project(ethzasl_apriltag2 VERSION 1.0.0)
 
-add_definitions("-fPIC -O3")
+if (NOT WIN32)
+    add_definitions("-fPIC -O3")
+endif()
 find_package(Threads)
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -24,7 +26,7 @@ endif()
 file(GLOB SOURCE_FILES "src/*.cc")
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} Eigen3::Eigen ${OpenCV_LIBS})
-target_include_directories(${PROJECT_NAME} PUBLIC 
+target_include_directories(${PROJECT_NAME} PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<INSTALL_INTERFACE:include>)
 install(TARGETS ${PROJECT_NAME}
@@ -81,9 +83,9 @@ install(
 # EXAMPLES #
 ############
 #demo
-if(NOT APPLE)
-  add_executable(apriltags_demo src/example/apriltags_demo.cpp src/example/Serial.cpp)
-  target_link_libraries(apriltags_demo ${PROJECT_NAME} v4l2)
-endif()
+#if(NOT APPLE)
+#  add_executable(apriltags_demo src/example/apriltags_demo.cpp src/example/Serial.cpp)
+#  target_link_libraries(apriltags_demo ${PROJECT_NAME} v4l2)
+#endif()
 
 

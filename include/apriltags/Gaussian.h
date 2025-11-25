@@ -1,6 +1,7 @@
 #ifndef GAUSSIAN_H
 #define GAUSSIAN_H
 
+#include "MathUtil.h"
 #include <cmath>
 #include <vector>
 
@@ -25,11 +26,11 @@ public:
    *  @param alen
    *  @param f
    *  @param r the resultant array of pixels
-   *  @param roff 
+   *  @param roff
    */
   static void convolveSymmetricCentered(const std::vector<float>& a, unsigned int aoff, unsigned int alen,
 					const std::vector<float>& f, std::vector<float>& r, unsigned int roff);
-  
+
 };
 
 } // namespace

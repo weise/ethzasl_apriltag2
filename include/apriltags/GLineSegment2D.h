@@ -1,6 +1,7 @@
 #ifndef GLINESEGMENT2D_H
 #define GLINESEGMENT2D_H
 
+#include "MathUtil.h"
 #include <algorithm>
 #include <cfloat>
 #include <cmath>

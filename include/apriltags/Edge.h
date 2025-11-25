@@ -1,9 +1,9 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-#include <vector>
-
 #include "apriltags/FloatImage.h"
+
+#include <vector>
 
 namespace AprilTags {
 

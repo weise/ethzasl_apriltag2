@@ -1,3 +1,4 @@
+#include "apriltags/MathUtil.h"
 #include "apriltags/Gaussian.h"
 #include <iostream>
 

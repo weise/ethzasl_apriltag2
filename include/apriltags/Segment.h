@@ -1,6 +1,7 @@
 #ifndef SEGMENT_H
 #define SEGMENT_H
 
+#include "MathUtil.h"
 #include <cmath>
 #include <vector>
 

@@ -1,6 +1,7 @@
 #ifndef TAGFAMILY_H
 #define TAGFAMILY_H
 
+#include "MathUtil.h"
 #include <climits>
 #include <cmath>
 #include <stdio.h>
