@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(ethzasl_apriltag2)
+project(ethzasl_apriltag2 VERSION 1.0.0)
 
 add_definitions("-fPIC -O3")
 find_package(Threads)
@@ -33,7 +33,49 @@ install(TARGETS ${PROJECT_NAME}
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin)
 
-install(DIRECTORY include/ DESTINATION include)
+install(
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+    DESTINATION include
+    FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
+)
+
+# install(
+#     EXPORT ${PROJECT_NAME}Targets
+#     FILE ${PROJECT_NAME}Targets.cmake
+#     NAMESPACE ${PROJECT_NAME}::
+#     DESTINATION share/cmake/${PROJECT_NAME}
+# )
+
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    INSTALL_DESTINATION share/cmake/${PROJECT_NAME}
+)
+
+# Version file
+write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+
+# Install config + version files
+install(
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+    DESTINATION share/cmake/${PROJECT_NAME}
+)
+
+# Install exported targets file
+install(
+    EXPORT ${PROJECT_NAME}Targets
+    FILE ${PROJECT_NAME}Targets.cmake
+    NAMESPACE ${PROJECT_NAME}::
+    DESTINATION share/cmake/${PROJECT_NAME}
+)
 
 ############
 # EXAMPLES #
