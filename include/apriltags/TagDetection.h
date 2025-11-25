@@ -1,6 +1,8 @@
 #ifndef TAGDETECTION_H
 #define TAGDETECTION_H
 
+#include "apriltags/MathUtil.h"
+
 #include <Eigen/Dense>
 
 #include "opencv2/opencv.hpp"
@@ -32,7 +34,7 @@ struct TagDetection {
 
   //! The hamming distance between the detected code and the true code
   int hammingDistance;
-  
+
   //! How many 90 degree rotations were required to align the code (internal use only)
   int rotation;
 
